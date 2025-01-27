@@ -28,14 +28,27 @@ class Human{
     }
 }
 
+class A{
+    public void show(){
+        System.out.println("Show in A");
+    }
+}
+class B extends A{
+    public void show(){
+        System.out.println("Show in B");
+    }
+}
+
 public class Oops{
     public static void main(String[] args){
         Human h1 = new Human();
         Human h2 = new Human("TP", 21);
         // h1.setAge(22);
         // h1.setName("Pravveen");
-        System.out.println(h1.getName() +" "+ h1.getAge());
-        System.out.println(h2.getName() +" "+ h2.getAge());
+        // System.out.println(h1.getName() +" "+ h1.getAge());
+        // System.out.println(h2.getName() +" "+ h2.getAge());
+        B obj = new B();
+        obj.show();
 
     }
 }
