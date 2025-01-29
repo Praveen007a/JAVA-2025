@@ -29,11 +29,13 @@ class Human{
 }
 
 class A{
+    
     public void show(){
         System.out.println("Show in A");
     }
 }
 class B extends A{
+    
     public void show(){
         System.out.println("Show in B");
     }
@@ -49,6 +51,9 @@ public class Oops{
         // System.out.println(h2.getName() +" "+ h2.getAge());
         B obj = new B();
         obj.show();
+        
+
+
 
     }
 }
