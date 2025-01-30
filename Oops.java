@@ -43,17 +43,144 @@ class B extends A{
 
 public class Oops{
     public static void main(String[] args){
-        Human h1 = new Human();
-        Human h2 = new Human("TP", 21);
+        // Human h1 = new Human();
+        // Human h2 = new Human("TP", 21);
         // h1.setAge(22);
         // h1.setName("Pravveen");
         // System.out.println(h1.getName() +" "+ h1.getAge());
         // System.out.println(h2.getName() +" "+ h2.getAge());
-        B obj = new B();
-        obj.show();
+
+        //annonymous class
+        //  B obj = new B(){
+        //     public void show(){
+        //         System.out.println("In new Show");
+        //     }
+        //  };
+        //  obj.show();
+    
+        // abstract
+        // Jeep c1 =  new Jeep();
+        // c1.drive();
+        // c1.playMusic();
+        // c1.sunRoof();
+
+        // inner class
+        // OuterClass outer = new OuterClass();
+
+        // OuterClass.InnerClass inner = outer.new InnerClass();
+        // inner.checkAge();
+
+        // Avoid creating object of abstract class
+        // Car car  = new Car(){
+        //     public  void drive(){
+        //         System.out.println("Driving Car");
+        //     }
+        // };
+        // car.drive();
+
+        // Interface
+        // System.out.println(inter1.name +" " +inter1.age);
+        // inter1 tp = new inter1(){
+        //     public void show(){
+        //         System.out.println("Show");
+        //     }
+        //     public void config(){
+        //         System.out.println("Config");
+        //     }
+        // };
+        //  tp.show();
+        //  tp.config();
+
+        // enums
+
+        // Status[] s = Status.values();
         
+        // for(Status st : s){
+        //     System.out.println(st + " " + st.ordinal());
+        // }
 
+        Status s = Status.Success;
 
+        switch(s){
+            case Running:
+                System.out.println("All Working fine...");
+                break;
+            case Pending:
+                System.out.println("Works are Pending...");
+                break;
+            case Success:
+                System.out.println("All Works are Done...");
+                break;
+            case Failed:    
+                System.out.println("Some Works are Failed...");
+                break;
+            default:
+                System.out.println("Invalid Status...");
+        }
 
     }
+}
+// Abstract methods and classes
+
+abstract class Car{
+    public abstract void drive();
+
+    public void playMusic(){
+        System.out.println("Playing Music while driving...");
+    }
+}
+
+class Jeep extends Car{
+
+    public void drive(){
+        System.out.println("Driving Jeep");
+    }
+    public void sunRoof(){
+        System.out.println("Sunroof is Available");
+    }
+}
+
+// Inner Class
+
+class OuterClass{
+    int age = 10;
+
+    public void show(){
+        System.out.println(age);
+    }
+
+    class InnerClass{
+        public void checkAge(){
+            if(age>18){
+                System.out.println("You're a Major");
+            }
+            else{
+                System.out.println("you're a minor");
+            }
+        }
+    }
+}
+
+// Interfaces
+
+interface inter1{
+    int age= 22;
+    String name = "Praveen";
+    void show();
+    void config();
+}
+
+// class UseInterface implements inter1{
+//     public void show(){
+//         System.out.println("Show");
+//     }
+//     public void config(){
+//         System.out.println("Config");
+//     }
+// }
+
+// Enums
+
+enum Status{
+    Running,Success,Failed,Pending;
 }

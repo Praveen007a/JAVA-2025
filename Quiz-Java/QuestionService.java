@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class QuestionService {
 
     Questions[] questions = new Questions[5];
+    String[] selection = new String[5];
 
     public QuestionService(){
         questions[0] =  new Questions(1,"What is 1+2?","1","2","3","4","3");
@@ -13,7 +14,7 @@ public class QuestionService {
     }
 
     public void playQuiz(){
-        int score = 0;
+        int i=0;
         for(Questions q:questions){
             System.out.println("Question Id: "+ q.getId());
             System.out.println("Question: "+ q.getQuestion());
@@ -23,18 +24,22 @@ public class QuestionService {
             System.out.println("Option 4: "+ q.getOpt4());
 
             Scanner sc = new Scanner(System.in);
-            String ans = sc.nextLine();
+            selection[i] = sc.nextLine();
+            i++;
+        }
+        printScore();
+    }
+    public void printScore(){
+        int score =0;
+        for(int i=0;i<questions.length;i++){
+            Questions ques = questions[i];
+            String userAnswer = selection[i];
+            String correctAnswer = ques.getAnswer();
 
-            if(ans.equals(q.getAnswer())){
-                System.out.println("Correct Answer");
+            if(userAnswer.equals(correctAnswer)){
                 score++;
             }
-            else{
-                System.out.println("Wrong Answer");
-                score--;
-            }
-
-            sc.close();
         }
+        System.out.println("Your score is: "+score);
     }
 }
