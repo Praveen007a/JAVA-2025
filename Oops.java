@@ -101,22 +101,28 @@ public class Oops{
 
         Status s = Status.Success;
 
-        switch(s){
-            case Running:
-                System.out.println("All Working fine...");
-                break;
-            case Pending:
-                System.out.println("Works are Pending...");
-                break;
-            case Success:
-                System.out.println("All Works are Done...");
-                break;
-            case Failed:    
-                System.out.println("Some Works are Failed...");
-                break;
-            default:
-                System.out.println("Invalid Status...");
-        }
+        // switch(s){
+        //     case Running:
+        //         System.out.println("All Working fine...");
+        //         break;
+        //     case Pending:
+        //         System.out.println("Works are Pending...");
+        //         break;
+        //     case Success:
+        //         System.out.println("All Works are Done...");
+        //         break;
+        //     case Failed:    
+        //         System.out.println("Some Works are Failed...");
+        //         break;
+        //     default:
+        //         System.out.println("Invalid Status...");
+        // }
+
+        // Functional Interface
+
+        Tp tp =  (a,b) ->{return a+b;};
+
+        System.out.println(tp.add(10,20));
 
     }
 }
@@ -183,4 +189,11 @@ interface inter1{
 
 enum Status{
     Running,Success,Failed,Pending;
+}
+
+// Functional Interface
+@FunctionalInterface
+interface Tp{
+
+    int add(int a, int b);
 }
