@@ -42,7 +42,7 @@ class B extends A{
 }
 
 public class Oops{
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException{
         // Human h1 = new Human();
         // Human h2 = new Human("TP", 21);
         // h1.setAge(22);
@@ -120,12 +120,24 @@ public class Oops{
 
         // Functional Interface
 
-        Tp tp =  (a,b) ->{return a+b;};
+        // Tp tp =  (a,b) ->{return a+b;};
 
-        System.out.println(tp.add(10,20));
+        // System.out.println(tp.add(10,20));
+
+        // Threads
+
+
+        Thread1 t1 = new Thread1();
+        Thread2 t2 = new Thread2();
+
+        
+        t2.setPriority(t1.MAX_PRIORITY);
+        System.out.println(t1.getPriority());
+        t1.start();
+        t2.start();
 
     }
-}
+} 
 // Abstract methods and classes
 
 abstract class Car{
@@ -196,4 +208,29 @@ enum Status{
 interface Tp{
 
     int add(int a, int b);
+}
+
+// Threads
+
+class Thread1 extends Thread{ 
+    public void run(){
+        for(int i=0;i<225;i++){
+            System.out.println("Thread 1");
+            try{
+                Thread.sleep(10);
+            }
+            catch(Exception e){
+                System.out.println("Erros...");
+            }
+            
+        }
+    }
+}
+
+class Thread2 extends Thread{
+    public void run(){
+        for(int i=0;i<225;i++){
+            System.out.println("Thread 2");
+        }
+    }
 }
