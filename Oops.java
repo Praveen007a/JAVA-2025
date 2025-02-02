@@ -124,18 +124,31 @@ public class Oops{
 
         // System.out.println(tp.add(10,20));
 
-        // Threads
+        // Threads and Runnable
 
 
-        Thread1 t1 = new Thread1();
-        Thread2 t2 = new Thread2();
+        // Runnable  t1 = new Thread1();
+        // Runnable  t2 = new Thread2();
 
-        
-        t2.setPriority(t1.MAX_PRIORITY);
-        System.out.println(t1.getPriority());
+        // Thread th1 = new Thread(t1);
+        // Thread th2 = new Thread(t2);
+
+        // th1.start();
+        // th2.start();
+
+        // race condition
+
+        Demo0 d = new Demo0();
+        Runnable r1 = new Demo1();
+        Runnable r2 = new Demo2();
+
+        Thread t1 = new Thread(r1);
+        Thread t2 = new Thread(r2);
+
         t1.start();
         t2.start();
 
+        System.out.println(d.count);
     }
 } 
 // Abstract methods and classes
@@ -210,11 +223,11 @@ interface Tp{
     int add(int a, int b);
 }
 
-// Threads
+// Threads ans Runnable
 
-class Thread1 extends Thread{ 
+class Thread1 implements Runnable{ 
     public void run(){
-        for(int i=0;i<225;i++){
+        for(int i=0;i<5;i++){
             System.out.println("Thread 1");
             try{
                 Thread.sleep(10);
@@ -227,10 +240,35 @@ class Thread1 extends Thread{
     }
 }
 
-class Thread2 extends Thread{
+class Thread2 implements Runnable{
     public void run(){
-        for(int i=0;i<225;i++){
+        for(int i=0;i<5;i++){
             System.out.println("Thread 2");
+        }
+    }
+}
+
+//Race condition --> when two threads are trying to access the same resource at the same time.(Syncronization)
+class Demo0{
+    int count;
+    public void increment(){
+        count=count+1;
+    }
+} 
+
+class Demo1 implements Runnable{
+    Demo0 d = new Demo0();
+    public void run(){
+        for(int i=0;i<500;i++){
+            d.increment();
+        }
+    }
+}
+class Demo2 implements Runnable{
+    Demo0 d = new Demo0();
+    public void run(){
+        for(int i=0;i<500;i++){
+            d.increment();
         }
     }
 }

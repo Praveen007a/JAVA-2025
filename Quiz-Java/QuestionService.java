@@ -28,6 +28,7 @@ public class QuestionService {
             i++;
         }
         printScore();
+        
     }
     public void printScore(){
         int score =0;
